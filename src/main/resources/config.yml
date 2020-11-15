@@ -1,0 +1,7 @@
+Weapons:
+  Samurai:
+    cooldown: 10
+    material: DIAMOND_SWORD
+    display-name: "Samurai's blade"
+    lore:
+      - "Right click to dash!"
