@@ -1,5 +1,6 @@
 package it.flowzz.customweapons.weapons;
 
+import it.flowzz.customweapons.lang.Messages;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -32,7 +33,7 @@ public abstract class Weapon {
         this.lastUse = new HashMap<>();
     }
 
-    public void check(Player player) {
+    public boolean check(Player player) {
         if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()){
             ItemMeta weaponMeta = player.getItemInHand().getItemMeta();
             //Check if it's a CustomWeapon
@@ -41,16 +42,19 @@ public abstract class Weapon {
                     weaponMeta.getLore().equals(lore)){
                 //Check for cooldown
                 if(lastUse.containsKey(player.getUniqueId())){
-                    if(lastUse.get(player.getUniqueId()) + (cooldown * 1000) < System.currentTimeMillis()){
+                    long remainingTime = lastUse.get(player.getUniqueId()) + (cooldown * 1000) - System.currentTimeMillis();
+                    if(remainingTime < 0){
                         onClick(player);
                         lastUse.put(player.getUniqueId(),System.currentTimeMillis());
-                    }
+                    }else player.sendMessage(Messages.COOLDOWN.getTranslation().replace("%time%", String.valueOf(remainingTime/1000)));
                 }else {
                     onClick(player);
                     lastUse.put(player.getUniqueId(),System.currentTimeMillis());
                 }
+                return true;
             }
         }
+        return false;
     }
 
     protected abstract void onClick(Player player);

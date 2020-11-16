@@ -1,6 +1,7 @@
 package it.flowzz.customweapons.listeners;
 
 import it.flowzz.customweapons.CustomWeaponsPlugin;
+import it.flowzz.customweapons.weapons.Weapon;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +20,10 @@ public class PlayerInteractListener implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event){
         if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK) ||
-        event.getAction().equals(Action.RIGHT_CLICK_AIR))
-        plugin.getWeapons().forEach(weapon -> weapon.check(event.getPlayer()));
+        event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
+            plugin.getWeapons().stream()
+                    .filter(weapon -> weapon.check(event.getPlayer()))
+                    .forEach(weapon -> event.setCancelled(true));
+        }
     }
 }

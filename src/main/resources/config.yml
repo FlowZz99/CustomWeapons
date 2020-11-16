@@ -1,7 +1,23 @@
 Weapons:
-  Samurai:
+  samurai:
+    velocity: 3.0
     cooldown: 10
     material: DIAMOND_SWORD
     display-name: "Samurai's blade"
     lore:
       - "Right click to dash!"
+  freezeball:
+    cooldown: 10
+    material: SNOW_BALL
+    display-name: "&b&lJulie's snowball!"
+    lore:
+      - "&7 Right click to freeze someone!"
+
+
+Messages:
+  command-success: "&aYou successfully executed give command, the player will receive the item right now!"
+  command-syntax: "&cIncorrect command syntax! try with /cweapons give <player> <weapon-type>"
+  cooldown: "&cThis CustomWeapon is on cooldown! wait %time% seconds!"
+  inventory-full: "&cThe target player can't receive weapon because its inventory is full!"
+  player-offline: "&cThis is player is not online!"
+  received-weapon: "&aCongratulations, you have received a custom weapon!"

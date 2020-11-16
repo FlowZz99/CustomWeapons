@@ -11,16 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Getter
 public class Samurai extends Weapon {
 
-    public Samurai(String material, String displayName, List<String> lore, int cooldown) {
+    private double velocity;
+
+    public Samurai(String material, String displayName, List<String> lore, int cooldown, double velocity) {
         super(material, displayName, lore, cooldown);
+        this.velocity = velocity;
     }
 
     @Override
     protected void onClick(Player player) {
-        player.setVelocity(player.getLocation().getDirection().normalize().setY(0.2).multiply(1.5));
+        player.setVelocity(player.getLocation().getDirection().normalize().setY(0.2).multiply(velocity));
 
         List<UUID> entityDamaged = new ArrayList<>();
         new BukkitRunnable(){

@@ -1,7 +1,10 @@
 package it.flowzz.customweapons;
 
+import it.flowzz.customweapons.commands.GiveCommand;
+import it.flowzz.customweapons.listeners.EntityListener;
 import it.flowzz.customweapons.listeners.PlayerInteractListener;
 import it.flowzz.customweapons.weapons.Weapon;
+import it.flowzz.customweapons.weapons.impl.FreezeBall;
 import it.flowzz.customweapons.weapons.impl.Samurai;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,8 +23,9 @@ public class CustomWeaponsPlugin extends JavaPlugin {
         instance = this;
         saveDefaultConfig();
         loadWeapons();
+        new GiveCommand(this);
         new PlayerInteractListener(this);
-
+        new EntityListener(this);
     }
 
     @Override
@@ -33,10 +37,18 @@ public class CustomWeaponsPlugin extends JavaPlugin {
     private void loadWeapons() {
         //Samurai
         weapons.add(new Samurai(
-                        getConfig().getString("Weapons.Samurai.material"),
-                getConfig().getString("Weapons.Samurai.display-name"),
-                getConfig().getStringList("Weapons.Samurai.lore"),
-                getConfig().getInt("Weapons.Samurai.cooldown")
+                getConfig().getString("Weapons.samurai.material"),
+                getConfig().getString("Weapons.samurai.display-name"),
+                getConfig().getStringList("Weapons.samurai.lore"),
+                getConfig().getInt("Weapons.samurai.cooldown"),
+                getConfig().getDouble("Weapons.samurai.velocity")
+        ));
+        //FreezeBall
+        weapons.add(new FreezeBall(
+                getConfig().getString("Weapons.freezeball.material"),
+                getConfig().getString("Weapons.freezeball.display-name"),
+                getConfig().getStringList("Weapons.freezeball.lore"),
+                getConfig().getInt("Weapons.freezeball.cooldown")
 
         ));
 

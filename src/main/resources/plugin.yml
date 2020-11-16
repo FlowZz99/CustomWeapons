@@ -1,4 +1,8 @@
 name: CustomWeapons
-version: 1.0.0
+version: 1.0.1
 author: _FlowZz_
 main: it.flowzz.customweapons.CustomWeaponsPlugin
+commands:
+  cweapons:
+    description: Base command to give custom weapons.
+    aliases: [customweapon,customweapons,cweapon]
