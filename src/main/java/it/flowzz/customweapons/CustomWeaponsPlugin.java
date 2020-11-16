@@ -6,6 +6,7 @@ import it.flowzz.customweapons.listeners.PlayerInteractListener;
 import it.flowzz.customweapons.weapons.Weapon;
 import it.flowzz.customweapons.weapons.impl.FreezeBall;
 import it.flowzz.customweapons.weapons.impl.Samurai;
+import it.flowzz.customweapons.weapons.impl.SlowBow;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -49,6 +50,14 @@ public class CustomWeaponsPlugin extends JavaPlugin {
                 getConfig().getString("Weapons.freezeball.display-name"),
                 getConfig().getStringList("Weapons.freezeball.lore"),
                 getConfig().getInt("Weapons.freezeball.cooldown")
+
+        ));
+        //FreezeBall
+        weapons.add(new SlowBow(
+                getConfig().getString("Weapons.slowbow.material"),
+                getConfig().getString("Weapons.slowbow.display-name"),
+                getConfig().getStringList("Weapons.slowbow.lore"),
+                getConfig().getInt("Weapons.slowbow.cooldown")
 
         ));
 

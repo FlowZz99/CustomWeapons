@@ -1,7 +1,7 @@
 package it.flowzz.customweapons.listeners;
 
 import it.flowzz.customweapons.CustomWeaponsPlugin;
-import it.flowzz.customweapons.weapons.Weapon;
+import it.flowzz.customweapons.weapons.impl.SlowBow;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,7 +22,7 @@ public class PlayerInteractListener implements Listener {
         if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK) ||
         event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
             plugin.getWeapons().stream()
-                    .filter(weapon -> weapon.check(event.getPlayer()))
+                    .filter(weapon -> weapon.check(event.getPlayer()) && !(weapon instanceof SlowBow))
                     .forEach(weapon -> event.setCancelled(true));
         }
     }

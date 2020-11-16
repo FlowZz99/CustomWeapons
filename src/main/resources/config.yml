@@ -12,6 +12,12 @@ Weapons:
     display-name: "&b&lJulie's snowball!"
     lore:
       - "&7 Right click to freeze someone!"
+  slowbow:
+    cooldown: 3
+    material: BOW
+    display-name: "&e&lRome's bow"
+    lore:
+      - "&7 When a target is shot using Rome's bow they will be slowed down!"
 
 
 Messages:

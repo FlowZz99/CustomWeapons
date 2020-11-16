@@ -2,7 +2,6 @@ package it.flowzz.customweapons.weapons.impl;
 
 import it.flowzz.customweapons.CustomWeaponsPlugin;
 import it.flowzz.customweapons.weapons.Weapon;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.metadata.FixedMetadataValue;

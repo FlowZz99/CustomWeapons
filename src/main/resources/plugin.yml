@@ -1,5 +1,5 @@
 name: CustomWeapons
-version: 1.0.1
+version: 1.0.2
 author: _FlowZz_
 main: it.flowzz.customweapons.CustomWeaponsPlugin
 commands:

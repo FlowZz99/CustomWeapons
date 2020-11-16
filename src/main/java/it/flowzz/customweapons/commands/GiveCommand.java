@@ -61,7 +61,11 @@ public class GiveCommand implements CommandExecutor {
     private ItemStack buildWeapon(String type){
         ItemStack cweapon = new ItemStack(Material.valueOf(plugin.getConfig().getString("Weapons."+ type.toLowerCase() +".material")));
         ItemMeta cweaponMeta = cweapon.getItemMeta();
+
+        cweaponMeta.spigot().setUnbreakable(true);
         cweaponMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        cweaponMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+
         cweaponMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("Weapons."+ type.toLowerCase() +".display-name")));
         List<String> lore = new ArrayList<>();
         for (String line : plugin.getConfig().getStringList("Weapons." + type.toLowerCase() + ".lore")) {

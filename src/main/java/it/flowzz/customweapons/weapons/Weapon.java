@@ -1,6 +1,7 @@
 package it.flowzz.customweapons.weapons;
 
 import it.flowzz.customweapons.lang.Messages;
+import it.flowzz.customweapons.weapons.impl.SlowBow;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -41,7 +42,7 @@ public abstract class Weapon {
                     weaponMeta.getDisplayName().equalsIgnoreCase(displayName) &&
                     weaponMeta.getLore().equals(lore)){
                 //Check for cooldown
-                if(lastUse.containsKey(player.getUniqueId())){
+                if(lastUse.containsKey(player.getUniqueId()) && !(this instanceof SlowBow)){
                     long remainingTime = lastUse.get(player.getUniqueId()) + (cooldown * 1000) - System.currentTimeMillis();
                     if(remainingTime < 0){
                         onClick(player);
@@ -49,6 +50,7 @@ public abstract class Weapon {
                     }else player.sendMessage(Messages.COOLDOWN.getTranslation().replace("%time%", String.valueOf(remainingTime/1000)));
                 }else {
                     onClick(player);
+                    if(!(this instanceof SlowBow))
                     lastUse.put(player.getUniqueId(),System.currentTimeMillis());
                 }
                 return true;
